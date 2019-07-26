@@ -21,3 +21,24 @@ def CreateNote(CreateAPIView):
 def demo(request):
 	return render(request, 'demo.html')
     
+
+class NoteDetails(APIView):
+    def get(self, request, pk):
+        note = Notes.objects.get(pk=pk)
+        serializer = NoteSerializer(note)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request, pk):
+        note = Notes.objects.get(pk=pk)
+        serializer = NoteSerializer(instance=note, data=request.data, partial=True)
+
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def delete(self, request, pk):
+        note = Notes.objects.get(pk=pk)
+        note.delete()
+        return Response({"deleted": "yes"}, status=status.HTTP_200_OK)
