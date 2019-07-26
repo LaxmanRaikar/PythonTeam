@@ -13,3 +13,7 @@ class UserProfileInfo(models.Model):
 
 	def __str__(self):
 		return self.user.username
+
+
+class Note(models.model):
+  text = models.CharField(max_length=100)
