@@ -16,4 +16,8 @@ def sing_up(request):
 
 def CreateNote(CreateAPIView):
     serializer_class = NoteSerializer
+
+
+def demo(request):
+	return render(request, 'demo.html')
     
