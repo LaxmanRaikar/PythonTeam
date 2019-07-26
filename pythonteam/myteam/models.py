@@ -17,3 +17,5 @@ class UserProfileInfo(models.Model):
 
 class Note(models.model):
   text = models.CharField(max_length=100)
+  author = models.CharField(max_length=100)
+  created = models.DateTimeField(auto_now_add=True)
