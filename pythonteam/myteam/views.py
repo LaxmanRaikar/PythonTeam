@@ -5,7 +5,7 @@ from .models import UserProfileInfo
 
 
 def login(request):
-    return render('login.html')
+    return render('user_login.html')
 
 
 def sing_up(request):
